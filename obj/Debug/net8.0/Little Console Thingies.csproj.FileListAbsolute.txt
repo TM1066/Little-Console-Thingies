@@ -12,3 +12,4 @@ C:\Users\Student\source\repos\Little Console Thingies\obj\Debug\net8.0\refint\Li
 C:\Users\Student\source\repos\Little Console Thingies\obj\Debug\net8.0\Little Console Thingies.pdb
 C:\Users\Student\source\repos\Little Console Thingies\obj\Debug\net8.0\Little Console Thingies.genruntimeconfig.cache
 C:\Users\Student\source\repos\Little Console Thingies\obj\Debug\net8.0\ref\Little Console Thingies.dll
+C:\Users\Student\source\repos\Little Console Thingies\obj\Debug\net8.0\Little Console Thingies.sourcelink.json

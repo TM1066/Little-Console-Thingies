@@ -1,0 +1,14 @@
+C:\Users\Student\source\repos\Little Console Thingies\obj\Debug\net8.0\Little Console Thingies.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Student\source\repos\Little Console Thingies\obj\Debug\net8.0\Little Console Thingies.AssemblyInfoInputs.cache
+C:\Users\Student\source\repos\Little Console Thingies\obj\Debug\net8.0\Little Console Thingies.AssemblyInfo.cs
+C:\Users\Student\source\repos\Little Console Thingies\obj\Debug\net8.0\Little Console Thingies.csproj.CoreCompileInputs.cache
+C:\Users\Student\source\repos\Little Console Thingies\bin\Debug\net8.0\Little Console Thingies.exe
+C:\Users\Student\source\repos\Little Console Thingies\bin\Debug\net8.0\Little Console Thingies.deps.json
+C:\Users\Student\source\repos\Little Console Thingies\bin\Debug\net8.0\Little Console Thingies.runtimeconfig.json
+C:\Users\Student\source\repos\Little Console Thingies\bin\Debug\net8.0\Little Console Thingies.dll
+C:\Users\Student\source\repos\Little Console Thingies\bin\Debug\net8.0\Little Console Thingies.pdb
+C:\Users\Student\source\repos\Little Console Thingies\obj\Debug\net8.0\Little Console Thingies.dll
+C:\Users\Student\source\repos\Little Console Thingies\obj\Debug\net8.0\refint\Little Console Thingies.dll
+C:\Users\Student\source\repos\Little Console Thingies\obj\Debug\net8.0\Little Console Thingies.pdb
+C:\Users\Student\source\repos\Little Console Thingies\obj\Debug\net8.0\Little Console Thingies.genruntimeconfig.cache
+C:\Users\Student\source\repos\Little Console Thingies\obj\Debug\net8.0\ref\Little Console Thingies.dll

@@ -23,8 +23,8 @@
                 Console.Clear();
                 DisplayGrid(grid);
                 Thread.Sleep(200);
-                //FallingSand(grid);
-                Conwaysingit(grid);
+                FallingSand(grid);
+                //Conwaysingit(grid);
             }
         }
 

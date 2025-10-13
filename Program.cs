@@ -4,27 +4,40 @@
     {
         static public Random rand = new Random();
         
-        static public int cols = 25;
-        static public int rows = 100;
+        static public int cols = 10;
+        static public int rows = 70;
         static public bool[,] grid = new bool[cols, rows];
         static void Main(string[] args)
         {
+            int spawned = 0;
             //randomise grid between 0 and 1 (false and true)
             for (int i = 0; i < cols; i++) // loop through each coloumn
             {
                 for (int j = 0; j < rows; j++) // loop through each row of the column
                 {
-                    grid[i, j] = rand.Next(2) == 1;
+                    if (spawned <= 25)
+                    {
+                        grid[i, j] = rand.Next(2) == 1;
+                    }
+                    else
+                    {
+                        grid[i, j] = false;
+                    }
+                    
                 }
             }
+
+            int generation = 0;
 
             while (true)
             {
                 Console.Clear();
                 DisplayGrid(grid);
+                Console.Write($"\n\nGeneration: {generation}");
+                generation++;
                 Thread.Sleep(200);
-                FallingSand(grid);
-                //Conwaysingit(grid);
+                //FallingSand(grid);
+                Conwaysingit(grid);
             }
         }
 
@@ -66,20 +79,36 @@
                 {
                     int neighbours = 0;
 
-                    if (j - 1 >= 0)
+                    if (j - 1 >= 0) // checking below
                     {
                         if (grid[i, j - 1]) { neighbours++; }
                     }
-                    if (j + 1 < rows)
+                    if (j - 1 >= 0 & i - 1 >= 0) // checking down and left
+                    {
+                        if (grid[i - 1, j - 1]) { neighbours++; }
+                    }
+                    if (j - 1 >= 0 & i + 1 < cols) // checking down and right
+                    {
+                        if (grid[i + 1, j - 1]) { neighbours++; }
+                    }
+                    if (j + 1 < rows) //checking above
                     {
                         if (grid[i, j + 1]) { neighbours++; }
                     }
+                    if (j + 1 < rows & i - 1 >= 0) // checking up and left
+                    {
+                        if (grid[i - 1, j + 1]) { neighbours++; }
+                    }
+                    if (j + 1 < rows & i + 1 < cols) // checking up and right
+                    {
+                        if (grid[i + 1, j + 1]) { neighbours++; }
+                    }
 
-                    if (i - 1 >= 0)
+                    if (i - 1 >= 0) // checking left
                     {
                         if (grid[i - 1, j]) { neighbours++; }
                     }
-                    if (i + 1 < cols)
+                    if (i + 1 < cols) // checking right
                     {
                         if (grid[i + 1, j]) { neighbours++; }
                     }

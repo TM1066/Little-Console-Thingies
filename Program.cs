@@ -4,9 +4,13 @@
     {
         static public Random rand = new Random();
         
-        static public int cols = 10;
-        static public int rows = 70;
+        static public int cols = 20;
+        static public int rows = 140;
         static public bool[,] grid = new bool[cols, rows];
+
+        static int playerRow = 70;
+        static int playerCol = 10;
+
         static void Main(string[] args)
         {
             int spawned = 0;
@@ -23,7 +27,7 @@
                     {
                         grid[i, j] = false;
                     }
-                    
+
                 }
             }
 
@@ -33,11 +37,12 @@
             {
                 Console.Clear();
                 DisplayGrid(grid);
-                Console.Write($"\n\nGeneration: {generation}");
+                Console.Write($"\n\nFrame: {generation}");
                 generation++;
                 Thread.Sleep(200);
-                //FallingSand(grid);
-                Conwaysingit(grid);
+                FallingSand(grid);
+                //FallingSandWithPlayer(grid);
+                //Conwaysingit(grid);
             }
         }
 
@@ -61,6 +66,44 @@
                 {
                     if (i - 1 >= 0)
                     {
+                        //Checking straight below sand
+                        if (grid[i, j] && !grid[i - 1, j])
+                        {
+                            grid[i, j] = false;
+                            grid[i - 1, j] = true;
+                        }
+                        if (j - 1 >= 0)
+                        {
+                            //checking down and left
+                            if (grid[i, j] && !grid[i - 1, j - 1])
+                            {
+                                grid[i, j] = false;
+                                grid[i - 1, j - 1] = true;
+                            }
+                        }
+                        if (j + 1 < rows)
+                        {
+                            //checking down and right
+                            if (grid[i, j] && !grid[i - 1, j + 1])
+                            {
+                                grid[i, j] = false;
+                                grid[i - 1, j + 1] = true;
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }
+
+        static void FallingSandWithPlayer(bool[,] grid)
+        {
+            for (int i = 0; i < cols; i++) // loop through each coloumn
+            {
+                for (int j = 0; j < rows; j++) // loop through each row of the column
+                {
+                    if (i - 1 >= 0)
+                    {
                         if (grid[i, j] && !grid[i - 1, j])
                         {
                             grid[i, j] = false;
@@ -69,6 +112,7 @@
                     }
                 }
             }
+            grid[playerCol, playerRow] = true;
         }
         
         static void Conwaysingit(bool[,] grid)

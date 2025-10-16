@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Student\\source\\repos\\Little Console Thingies\\",
+  "WorkspaceRootPath": "C:\\Users\\Student\\Documents\\GitHub\\Little-Console-Thingies\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0215A984-7D18-4559-94E1-4E7648FBDA89}|Little Console Thingies.csproj|c:\\users\\student\\source\\repos\\little console thingies\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0215A984-7D18-4559-94E1-4E7648FBDA89}|Little Console Thingies.csproj|c:\\users\\student\\documents\\github\\little-console-thingies\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0215A984-7D18-4559-94E1-4E7648FBDA89}|Little Console Thingies.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Student\\source\\repos\\Little Console Thingies\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Student\\Documents\\GitHub\\Little-Console-Thingies\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Student\\source\\repos\\Little Console Thingies\\Program.cs",
+              "ToolTip": "C:\\Users\\Student\\Documents\\GitHub\\Little-Console-Thingies\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwC0AAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-09T09:14:04.713Z",
               "EditorCaption": ""

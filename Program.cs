@@ -12,8 +12,8 @@
     {
         static public Random rand = new Random();
 
-        static public int cols = 80;
-        static public int rows = 200;
+        static public int cols = 60;
+        static public int rows = 150;
         static public Particle?[,] grid = new Particle?[cols, rows];
 
         static int playerRow = 70;
@@ -43,7 +43,7 @@
 
             while (true)
             {
-                Console.Clear();
+                Console.SetCursorPosition(0,0);
                 DisplayGrid(grid);
                 Console.Write($"\n\nFrame: {generation}");
                 generation++;

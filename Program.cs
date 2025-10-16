@@ -1,33 +1,39 @@
 ﻿namespace Little_Console_Thingies
 {
+
+    public class Particle()
+    {
+        public bool floats;
+    }
+
+
     internal class Program
     {
         static public Random rand = new Random();
-        
-        static public int cols = 20;
+
+        static public int cols = 40;
         static public int rows = 140;
-        static public bool[,] grid = new bool[cols, rows];
+        static public Particle?[,] grid = new Particle?[cols, rows];
 
         static int playerRow = 70;
         static int playerCol = 10;
 
         static void Main(string[] args)
         {
-            int spawned = 0;
             //randomise grid between 0 and 1 (false and true)
             for (int i = 0; i < cols; i++) // loop through each coloumn
             {
                 for (int j = 0; j < rows; j++) // loop through each row of the column
                 {
-                    if (spawned <= 25)
+                    if (rand.Next(2) == 1)
                     {
-                        grid[i, j] = rand.Next(2) == 1;
+                        grid[i, j] = null;
                     }
                     else
                     {
-                        grid[i, j] = false;
+                        grid[i, j] = new Particle();
+                        grid[i, j].floats = rand.Next(2) == 1;
                     }
-
                 }
             }
 
@@ -46,75 +52,106 @@
             }
         }
 
-        static void RandomiseGrid(bool[,] grid)
-        {
-            //randomise grid between 0 and 1 (false and true)
-            for (int i = 0; i < cols; i++) // loop through each coloumn
-            {
-                for (int j = 0; j < rows; j++) // loop through each row of the column
-                {
-                    grid[i, j] = rand.Next(2) == 1;
-                }
-            }
-        }
+        // static void RandomiseGrid(Particle?[,] grid)
+        // {
+        //     //randomise grid between 0 and 1 (false and true)
+        //     for (int i = 0; i < cols; i++) // loop through each coloumn
+        //     {
+        //         if (rand.Next(2) == 1)
+        //         {
+        //             grid[i,j] = null;
+        //         }
+        //         if (grid[i, j] != null)
+        //         {
+        //             grid[i, j].floats = rand.Next(2) == 1;
+        //         }
+        //     }
+        // }
 
-        static void FallingSand(bool[,] grid)
+        static void FallingSand(Particle?[,] grid)
         {
             for (int i = 0; i < cols; i++) // loop through each coloumn
             {
                 for (int j = 0; j < rows; j++) // loop through each row of the column
                 {
-                    if (i - 1 >= 0)
+
+
+                    if (grid[i, j] != null)
                     {
-                        //Checking straight below sand
-                        if (grid[i, j] && !grid[i - 1, j])
+                        //Logic for sand
+                        if (grid[i, j].floats)
                         {
-                            grid[i, j] = false;
-                            grid[i - 1, j] = true;
-                        }
-                        if (j - 1 >= 0)
-                        {
-                            //checking down and left
-                            if (grid[i, j] && !grid[i - 1, j - 1])
+                            if (i - 1 >= 0)
                             {
-                                grid[i, j] = false;
-                                grid[i - 1, j - 1] = true;
+                                //Checking straight below sand
+                                if (grid[i, j] != null && grid[i - 1, j] == null)
+                                {
+                                    grid[i - 1, j] = grid[i, j];
+                                    grid[i, j] = null;
+
+                                }
+                                if (j - 1 >= 0)
+                                {
+                                    //checking down and left
+                                    if (grid[i, j] != null && grid[i - 1, j - 1] == null)
+                                    {
+                                        grid[i - 1, j - 1] = grid[i, j];
+                                        grid[i, j] = null;
+
+                                    }
+                                }
+                                if (j + 1 < rows)
+                                {
+                                    //checking down and right
+                                    if (grid[i, j] != null && grid[i - 1, j + 1] == null)
+                                    {
+                                        grid[i - 1, j + 1] = grid[i,j];
+                                        grid[i, j] = null;
+                                        
+                                    }
+                                }
                             }
                         }
-                        if (j + 1 < rows)
+                        //Logic for Gas
+                        else
                         {
-                            //checking down and right
-                            if (grid[i, j] && !grid[i - 1, j + 1])
+                            if (i + 1 < cols)
                             {
-                                grid[i, j] = false;
-                                grid[i - 1, j + 1] = true;
+                                //Checking straight up
+                                if (grid[i, j] != null && grid[i + 1, j] == null)
+                                {
+                                    grid[i + 1, j] = grid[i, j];
+                                    grid[i, j] = null;
+
+                                }
+                                // if (j - 1 >= 0)
+                                // {
+                                //     //checking down and left
+                                //     if (grid[i, j] != null && grid[i - 1, j - 1] == null)
+                                //     {
+                                //         grid[i - 1, j - 1] = grid[i, j];
+                                //         grid[i, j] = null;
+
+                                //     }
+                                // }
+                                // if (j + 1 < rows)
+                                // {
+                                //     //checking down and right
+                                //     if (grid[i, j] != null && grid[i - 1, j + 1] == null)
+                                //     {
+                                //         grid[i - 1, j + 1] = grid[i,j];
+                                //         grid[i, j] = null;
+                                        
+                                //     }
+                                // }
                             }
                         }
-                        
                     }
                 }
             }
         }
 
-        static void FallingSandWithPlayer(bool[,] grid)
-        {
-            for (int i = 0; i < cols; i++) // loop through each coloumn
-            {
-                for (int j = 0; j < rows; j++) // loop through each row of the column
-                {
-                    if (i - 1 >= 0)
-                    {
-                        if (grid[i, j] && !grid[i - 1, j])
-                        {
-                            grid[i, j] = false;
-                            grid[i - 1, j] = true;
-                        }
-                    }
-                }
-            }
-            grid[playerCol, playerRow] = true;
-        }
-        
+
         static void Conwaysingit(bool[,] grid)
         {
             for (int i = 0; i < cols; i++) // loop through each coloumn
@@ -168,15 +205,29 @@
                 }
             }
         }
-        
-        static void DisplayGrid(bool[,] grid)
+
+        static void DisplayGrid(Particle?[,] grid)
         {
             for (int i = 0; i < cols; i++) // loop through each coloumn
             {
                 for (int j = 0; j < rows; j++) // loop through each row of the column
                 {
-                    // if place in grid is true write a character else write a space
-                    Console.Write(grid[i, j] == false ? 'O' : ' ');
+                    if (grid[i, j] != null)
+                    {
+                        if (grid[i, j].floats)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                        }
+                        Console.Write("O");
+                    }
+                    else
+                    {
+                        Console.Write(" ");
+                    }
                 }
 
                 Console.WriteLine(); // go down by a line

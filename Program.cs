@@ -4,6 +4,7 @@
     public class Particle()
     {
         public bool floats;
+        public bool isLiquid;
     }
 
 
@@ -11,8 +12,8 @@
     {
         static public Random rand = new Random();
 
-        static public int cols = 40;
-        static public int rows = 140;
+        static public int cols = 80;
+        static public int rows = 200;
         static public Particle?[,] grid = new Particle?[cols, rows];
 
         static int playerRow = 70;
@@ -33,6 +34,7 @@
                     {
                         grid[i, j] = new Particle();
                         grid[i, j].floats = rand.Next(2) == 1;
+                        grid[i, j].isLiquid = rand.Next(2) == 1;
                     }
                 }
             }
@@ -74,76 +76,187 @@
             {
                 for (int j = 0; j < rows; j++) // loop through each row of the column
                 {
-
-
                     if (grid[i, j] != null)
                     {
-                        //Logic for sand
+                        //Logic for gas
                         if (grid[i, j].floats)
                         {
                             if (i - 1 >= 0)
                             {
-                                //Checking straight below sand
-                                if (grid[i, j] != null && grid[i - 1, j] == null)
+                                //Checking straight up
+                                if (grid[i - 1, j] == null)
                                 {
                                     grid[i - 1, j] = grid[i, j];
                                     grid[i, j] = null;
-
+                                }
+                                else if (!grid[i - 1, j].floats)
+                                {
+                                    var temp = grid[i - 1, j];
+                                    grid[i - 1, j] = grid[i, j];
+                                    grid[i, j] = temp;
                                 }
                                 if (j - 1 >= 0)
                                 {
-                                    //checking down and left
-                                    if (grid[i, j] != null && grid[i - 1, j - 1] == null)
+                                    //checking left
+                                    if (grid[i, j - 1] == null && rand.Next(2) == 1)
+                                    {
+                                        grid[i, j - 1] = grid[i, j];
+                                        grid[i, j] = null;
+                                    }
+                                    //checking up and left
+                                    if (grid[i - 1, j - 1] == null)
                                     {
                                         grid[i - 1, j - 1] = grid[i, j];
                                         grid[i, j] = null;
-
+                                    }
+                                    else if (!grid[i - 1, j - 1].floats)
+                                    {
+                                        var temp = grid[i - 1, j - 1];
+                                        grid[i - 1, j - 1] = grid[i, j];
+                                        grid[i, j] = temp;
                                     }
                                 }
                                 if (j + 1 < rows)
                                 {
-                                    //checking down and right
-                                    if (grid[i, j] != null && grid[i - 1, j + 1] == null)
+                                    //checking right
+                                    if (grid[i, j + 1] == null && rand.Next(2) == 1)
                                     {
-                                        grid[i - 1, j + 1] = grid[i,j];
+                                        grid[i, j + 1] = grid[i, j];
                                         grid[i, j] = null;
-                                        
+                                    }
+                                    //checking up and right
+                                    if (grid[i - 1, j + 1] == null)
+                                    {
+                                        grid[i - 1, j + 1] = grid[i, j];
+                                        grid[i, j] = null;
+                                    }
+                                    else if (!grid[i - 1, j + 1].floats)
+                                    {
+                                        var temp = grid[i - 1, j + 1];
+                                        grid[i - 1, j + 1] = grid[i, j];
+                                        grid[i, j] = temp;
                                     }
                                 }
                             }
                         }
-                        //Logic for Gas
+                        //logic for water
+                        else if (grid[i, j].isLiquid)
+                        {
+                            if (i + 1 < cols)
+                            {
+                                //Checking straight down
+                                if (grid[i + 1, j] == null)
+                                {
+                                    grid[i + 1, j] = grid[i, j];
+                                    grid[i, j] = null;
+                                }
+                                // else if (!grid[i + 1, j].floats && !grid[i + 1, j].isLiquid)
+                                // {
+                                //     var temp = grid[i + 1, j];
+                                //     grid[i + 1, j] = grid[i, j];
+                                //     grid[i, j] = temp;
+                                // }
+                                if (j - 1 >= 0)
+                                {
+                                    //checking left
+                                    if (grid[i, j - 1] == null && rand.Next(2) == 1)
+                                    {
+                                        grid[i, j - 1] = grid[i, j];
+                                        grid[i, j] = null;
+                                    }
+                                    //checking down and left
+                                    if (grid[i + 1, j - 1] == null)
+                                    {
+                                        grid[i + 1, j - 1] = grid[i, j];
+                                        grid[i, j] = null;
+                                    }
+                                    // else if (!grid[i + 1, j - 1].floats && !grid[i + 1, j].isLiquid)
+                                    // {
+                                    //     var temp = grid[i + 1, j - 1];
+                                    //     grid[i + 1, j - 1] = grid[i, j];
+                                    //     grid[i, j] = temp;
+                                    // }
+                                }
+                                if (j + 1 < rows)
+                                {
+                                    //checking right
+                                    if (grid[i, j + 1] == null && rand.Next(2) == 1)
+                                    {
+                                        grid[i, j + 1] = grid[i, j];
+                                        grid[i, j] = null;
+                                    }
+                                    //checking down and right
+                                    if (grid[i + 1, j + 1] == null)
+                                    {
+                                        grid[i + 1, j + 1] = grid[i, j];
+                                        grid[i, j] = null;
+                                    }
+                                    // else if (!grid[i + 1, j + 1].floats && !grid[i + 1, j].isLiquid)
+                                    // {
+                                    //     var temp = grid[i + 1, j + 1];
+                                    //     grid[i + 1, j + 1] = grid[i, j];
+                                    //     grid[i, j] = temp;
+                                    // }
+                                }
+                            }
+                        }
+                        //Logic for Sand
                         else
                         {
                             if (i + 1 < cols)
                             {
-                                //Checking straight up
-                                if (grid[i, j] != null && grid[i + 1, j] == null)
+                                if (grid[i, j] != null)
                                 {
-                                    grid[i + 1, j] = grid[i, j];
-                                    grid[i, j] = null;
+                                    //Checking straight Down
+                                    if (grid[i + 1, j] == null)
+                                    {
+                                        grid[i + 1, j] = grid[i, j];
+                                        grid[i, j] = null;
+                                    }
+                                    else if (grid[i + 1, j].isLiquid)
+                                    {
+                                        var temp = grid[i + 1, j];
+                                        grid[i + 1, j] = grid[i, j];
+                                        grid[i, j] = temp;
+                                    }
+                                    if (j - 1 >= 0)
+                                    {
+                                        //checking down and left
+                                        if (grid[i + 1, j - 1] == null && rand.Next(2) == 1)
+                                        {
+                                            grid[i + 1, j - 1] = grid[i, j];
+                                            grid[i, j] = null;
 
+                                        }
+                                        else if (grid[i + 1, j - 1] != null)
+                                        {
+                                            if (grid[i + 1, j - 1].isLiquid && rand.Next(2) == 1)
+                                            {
+                                                var temp = grid[i + 1, j - 1];
+                                                grid[i + 1, j - 1] = grid[i, j];
+                                                grid[i, j] = temp;
+                                            }
+                                        }
+                                    }
+                                    if (j + 1 < rows)
+                                    {
+                                        //checking down and right
+                                        if (grid[i + 1, j + 1] == null && rand.Next(2) == 1)
+                                        {
+                                            grid[i + 1, j + 1] = grid[i, j];
+                                            grid[i, j] = null;
+                                        }
+                                        else if (grid[i + 1, j + 1] != null)
+                                        {
+                                            if (grid[i + 1, j + 1].isLiquid && rand.Next(2) == 1)
+                                            {
+                                                var temp = grid[i + 1, j + 1];
+                                                grid[i + 1, j + 1] = grid[i, j];
+                                                grid[i, j] = temp;
+                                            }
+                                        }  
+                                    }
                                 }
-                                // if (j - 1 >= 0)
-                                // {
-                                //     //checking down and left
-                                //     if (grid[i, j] != null && grid[i - 1, j - 1] == null)
-                                //     {
-                                //         grid[i - 1, j - 1] = grid[i, j];
-                                //         grid[i, j] = null;
-
-                                //     }
-                                // }
-                                // if (j + 1 < rows)
-                                // {
-                                //     //checking down and right
-                                //     if (grid[i, j] != null && grid[i - 1, j + 1] == null)
-                                //     {
-                                //         grid[i - 1, j + 1] = grid[i,j];
-                                //         grid[i, j] = null;
-                                        
-                                //     }
-                                // }
                             }
                         }
                     }
@@ -216,20 +329,26 @@
                     {
                         if (grid[i, j].floats)
                         {
-                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.Write("'");
+                        }
+                        else if (grid[i, j].isLiquid)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.Write("o");
                         }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.Write("—");
                         }
-                        Console.Write("O");
                     }
                     else
                     {
                         Console.Write(" ");
                     }
                 }
-
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine(); // go down by a line
             }
         }

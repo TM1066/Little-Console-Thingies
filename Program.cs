@@ -5,6 +5,9 @@
     {
         public bool floats;
         public bool isLiquid;
+
+        public float weight;
+
     }
 
 
@@ -12,7 +15,7 @@
     {
         static public Random rand = new Random();
 
-        static public int cols = 60;
+        static public int cols = 50;
         static public int rows = 150;
         static public Particle?[,] grid = new Particle?[cols, rows];
 
@@ -119,7 +122,7 @@
                                 if (j + 1 < rows)
                                 {
                                     //checking right
-                                    if (grid[i, j + 1] == null && rand.Next(2) == 1)
+                                    if (grid[i, j + 1] == null)
                                     {
                                         grid[i, j + 1] = grid[i, j];
                                         grid[i, j] = null;
@@ -180,7 +183,7 @@
                                 if (j + 1 < rows)
                                 {
                                     //checking right
-                                    if (grid[i, j + 1] == null && rand.Next(2) == 1)
+                                    if (grid[i, j + 1] == null)
                                     {
                                         grid[i, j + 1] = grid[i, j];
                                         grid[i, j] = null;

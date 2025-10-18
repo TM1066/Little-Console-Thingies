@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Student\\Documents\\GitHub\\Little-Console-Thingies\\Little Console Thingies.csproj": {}
+    "C:\\Projects\\Misc\\Little-Console-Thingies\\Little Console Thingies.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Student\\Documents\\GitHub\\Little-Console-Thingies\\Little Console Thingies.csproj": {
+    "C:\\Projects\\Misc\\Little-Console-Thingies\\Little Console Thingies.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Student\\Documents\\GitHub\\Little-Console-Thingies\\Little Console Thingies.csproj",
+        "projectUniqueName": "C:\\Projects\\Misc\\Little-Console-Thingies\\Little Console Thingies.csproj",
         "projectName": "Little Console Thingies",
-        "projectPath": "C:\\Users\\Student\\Documents\\GitHub\\Little-Console-Thingies\\Little Console Thingies.csproj",
-        "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Student\\Documents\\GitHub\\Little-Console-Thingies\\obj\\",
+        "projectPath": "C:\\Projects\\Misc\\Little-Console-Thingies\\Little Console Thingies.csproj",
+        "packagesPath": "C:\\Users\\tmavi\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\Misc\\Little-Console-Thingies\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tmavi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -45,7 +45,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -66,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

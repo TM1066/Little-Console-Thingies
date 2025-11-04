@@ -15,8 +15,8 @@
     {
         static public Random rand = new Random();
 
-        static public int cols = 50;
-        static public int rows = 150;
+        static public int cols = 30;
+        static public int rows = 100;
         static public Particle?[,] grid = new Particle?[cols, rows];
 
         static int playerRow = 70;
@@ -42,19 +42,87 @@
                 }
             }
 
-            int generation = 0;
+            // int generation = 0;
 
-            while (true)
+            // while (true)
+            // {
+            //     Console.SetCursorPosition(0,0);
+            //     DisplayGrid(grid);
+            //     Console.Write($"\n\nFrame: {generation}");
+            //     generation++;
+            //     Thread.Sleep(200);
+            //     FallingSand(grid);
+            //     //FallingSandWithPlayer(grid);
+            //     //Conwaysingit(grid);
+            // }
+
+
+            //Week 6 task
+            Console.WriteLine();
+            //Console.WriteLine("-------------------------- Task 1 --------------------------");
+            Console.WriteLine();
+            double[] temperatures = new double[7];
+
+
+            // foreach (double bla in values)
+            // {
+            //     Random rand = new Random();
+            //     bla = rand.NextDouble();
+            //     Console.WriteLine($"Double Value: {bla}");
+            // }
+            for (int i = 0; i < temperatures.Length; i++)
             {
-                Console.SetCursorPosition(0,0);
-                DisplayGrid(grid);
-                Console.Write($"\n\nFrame: {generation}");
-                generation++;
-                Thread.Sleep(200);
-                FallingSand(grid);
-                //FallingSandWithPlayer(grid);
-                //Conwaysingit(grid);
+                Console.Write($"Please enter {DateTime.Now.AddDays(i).DayOfWeek}'s temperature: ");
+                try
+                {
+                    temperatures[i] = Convert.ToDouble(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.Write("Actually go and fuck yourself");
+                }
             }
+
+            Console.WriteLine();
+            Console.WriteLine("--------------------------");
+            Console.WriteLine();
+
+            double highestTemp = temperatures[0], lowestTemp = temperatures[0], averageTemp = temperatures[0];
+
+            for (int i = 0; i < temperatures.Length; i++)
+            {
+                Console.WriteLine($"{DateTime.Now.AddDays(i).DayOfWeek}'s temperature: {temperatures[i]}");
+                if (temperatures[i] > highestTemp)
+                {
+                    highestTemp = temperatures[i];
+                }
+                if (temperatures[i] < lowestTemp)
+                {
+                    lowestTemp = temperatures[i];
+                }
+
+                averageTemp += temperatures[i];
+                //temperatures[i] > highestTemp ? highestTemp = temperatures[i] : 
+            }
+            averageTemp /= temperatures.Length;
+
+            Console.WriteLine($"Highest Temp: {highestTemp}\nLowest Temp: {lowestTemp}\nAverage Temp: {averageTemp}");
+            Console.WriteLine("-------------------------- Task 2 ");
+            Console.WriteLine();
+
+            int[] studentScores = new int[5] { 0, 2, 4, 5, 1 };
+            studentScores.Reverse();
+            int scoreSum = 0;
+
+            for (int i = 0; i < studentScores.Length; i++)
+            {
+                scoreSum += studentScores[i];
+                Console.WriteLine($"Score {i}: {studentScores[i]}");
+
+            }
+            float scoreAverage = scoreSum / studentScores.Length;
+
+            Console.WriteLine($"Score Average: {scoreAverage}");
         }
 
         // static void RandomiseGrid(Particle?[,] grid)
